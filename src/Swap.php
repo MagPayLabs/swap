@@ -46,9 +46,9 @@ class Swap
      *
      * @return \Exchanger\ExchangeRate
      */
-    public function latest($currencyPair, array $options = [])
+    public function latest($baseCurrency, $quoteCurrency, array $options = [])
     {
-        return $this->quote($currencyPair, null, $options);
+        return $this->quote($baseCurrency, $quoteCurrency, null, $options);
     }
 
     /**
@@ -60,23 +60,9 @@ class Swap
      *
      * @return \Exchanger\ExchangeRate
      */
-    public function historical($currencyPair, \DateTimeInterface $date, array $options = [])
+    private function quote($baseCurrency, $quoteCurrency,  \DateTimeInterface $date = null, array $options = [])
     {
-        return $this->quote($currencyPair, $date, $options);
-    }
-
-    /**
-     * Quotes a currency pair.
-     *
-     * @param string             $currencyPair The currency pair like "EUR/USD"
-     * @param \DateTimeInterface $date         An optional date for historical rates
-     * @param array              $options      An array of query options
-     *
-     * @return \Exchanger\ExchangeRate
-     */
-    private function quote($currencyPair, \DateTimeInterface $date = null, array $options = [])
-    {
-        $exchangeQueryBuilder = new ExchangeRateQueryBuilder($currencyPair);
+        $exchangeQueryBuilder = new ExchangeRateQueryBuilder($baseCurrency, $quoteCurrency);
 
         if (null !== $date) {
             $exchangeQueryBuilder->setDate($date);

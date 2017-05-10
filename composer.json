@@ -1,5 +1,5 @@
 {
-    "name": "florianv/swap",
+    "name": "magpaylabs/swap",
     "description": "Exchange rates library for PHP",
     "keywords": ["currency", "money", "rate", "conversion", "exchange rates"],
     "license": "MIT",
@@ -22,7 +22,7 @@
     },
     "require": {
         "php": "^5.5 || ^7.0",
-        "florianv/exchanger": "~0.3"
+        "magpaylabs/exchanger": "~0.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8 || ^5.4",
